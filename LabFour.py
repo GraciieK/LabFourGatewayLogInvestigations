@@ -25,7 +25,7 @@ def tally_port_traffic(log_file):
 
 def generate_port_traffic_report(log_file, port_number):
 
-    regex = r'(.{6}) (.{8}) .*SRC=(.+) DST=(.+) .*SPT=(.+) ' + f'DPT=({port_number})'
+    regex = r'(.{6}) (.{8}) .*SRC=(.+) DST=(.+?) .*SPT=(.+) ' + f'DPT=({port_number})'
     data = filter_log_by_regex(log_file, regex)[1]
     report_df = pd.DataFrame(data)
     header_row = ('DATE', 'TIME', 'Source Ip Address', 'Destination IP Address', 'Source Port', 'Destination Port')
